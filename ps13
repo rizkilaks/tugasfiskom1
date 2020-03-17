@@ -1,0 +1,29 @@
+clc
+clear 
+
+h = linspace(-4,4,50);
+plot(h,f(h));
+
+
+panjang_data = length(h);
+for i=2:panjang_data;
+    h_baru=h(i);
+    h_lama=h(i-1);
+    y_baru=f(h_baru);
+    y_lama=f(h_lama);
+    if y_lama*y_baru<0
+        perkiraan_akar= (h_baru+h_lama)/2;
+    end
+end
+
+disp('Nilai h yang ditemukan adalah'), disp(perkiraan_akar)
+
+if perkiraan_akar<0
+    nilai_h=perkiraan_akar*-1;
+      disp('Karena hasilnya tidak boleh negatif maka nilai h yang sebenarnya adalah'), disp(nilai_h)
+end
+
+function y=f(h)
+y=3*h.^2-h.^3-20;
+end
+
